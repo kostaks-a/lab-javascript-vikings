@@ -66,15 +66,16 @@ class War {
     }
     vikingAttack(){
 
-        let result = this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength)
-
-
-        if ( this.saxonArmy[0].health <= 0)
-        {
-            this.saxonArmy.splice(0,1)
-        }
-
-        return result
+    let randomSax = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+    let randomVik = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+    let attack = randomSax.receiveDamage(randomVik.strength)
+    
+    this.saxonArmy.forEach((element, i) => {
+            if(element.health <= 0) {
+                this.saxonArmy.splice(i, 1) 
+            }
+        });
+    return attack
         
         
     }
